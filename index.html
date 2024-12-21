@@ -1,111 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Expense Tracker</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #6a4cc3, #6448d3, #87b5e5); /* Purple to Blue Gradient */
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .login-container {
-            background: rgba(255, 255, 255, 0.9); /* Semi-transparent White */
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            max-width: 400px;
-            width: 100%;
-        }
-
-        .login-container img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            object-fit: cover;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .login-container h1 {
-            color: #6448d3; /* Vibrant Purple Heading */
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            font-size: 1rem;
-            background: #f9f9f9;
-            color: #333;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        input[type="text"]:focus, input[type="password"]:focus {
-            outline: none;
-            border-color: #6448d3; /* Purple border on focus */
-            box-shadow: 0 0 8px rgba(100, 72, 211, 0.5);
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #fff;
-            background: linear-gradient(90deg, #6448d3, #87b5e5); /* Purple to Blue Gradient */
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        button:hover {
-            background: linear-gradient(90deg, #5532c3, #75a3d1); /* Slightly Darker Gradient */
-        }
-
-        button:focus {
-            outline: none;
-        }
-    </style>
+  <!-- Define the character set and viewport for responsiveness -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <!-- Link to the external CSS file -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="login-container">
-        <img src="logo.webp" alt="Expense Tracker Logo">
-        <h1>Login</h1>
-        <form id="login-form" onsubmit="return handleLogin(event)">
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
+  <!-- Container to hold the expense tracker application -->
+  <div class="container">
+    <!-- Header of the app -->
+    <h1>Expense Tracker</h1>
+    
+    <!-- Section to display the balance -->
+    <div id="balance">
+      <h3>Your Balance</h3>
+      <h2 id="balance-amount">$0.00</h2>
+    </div>
+    
+    <!-- Section to display income and expenses -->
+    <div id="income-expense">
+      <div>
+        <h3>Income</h3>
+        <p id="income-amount" class="money plus">+$0.00</p>
+      </div>
+      <div>
+        <h3>Expense</h3>
+        <p id="expense-amount" class="money minus">-$0.00</p>
+      </div>
     </div>
 
-    <script>
-        function handleLogin(event) {
-            event.preventDefault(); // Prevent form from submitting normally
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
+    <!-- Section to display transaction history -->
+    <h3>History</h3>
+    <ul id="transaction-list" class="list"></ul>
 
-            // Allow any username and password for now
-            if (username && password) {
-                // Redirect to the main expense tracker page
-                window.location.href = "expense.html"; // Replace with the actual file name
-            }
-        }
-    </script>
+    <!-- Section to add a new transaction -->
+    <h3>Add New Transaction</h3>
+    <form id="form">
+      <!-- Input field for transaction description -->
+      <div>
+        <label for="text">Description</label>
+        <input type="text" id="text" placeholder="Enter text..." required>
+      </div>
+      <!-- Input field for transaction amount -->
+      <div>
+        <label for="amount">Amount <br> (negative - expense, positive - income)</label>
+        <input type="number" id="amount" placeholder="Enter amount..." required>
+      </div>
+      <!-- Button to submit the transaction -->
+      <button type="submit" class="btn">Add Transaction</button>
+    </form>
+  </div>
+  <!-- Link to the external JavaScript file -->
+  <script src="script.js"></script>
 </body>
 </html>
