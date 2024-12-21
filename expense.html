@@ -7,113 +7,198 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
+            
             font-family: 'Arial', sans-serif;
+            
             margin: 0;
+            
             padding: 0;
-            background: linear-gradient(to bottom, #b3cde0, #d3c6e7, #a3d5d3); /* Smooth gradient inspired by the uploaded image */
+            
+            background: linear-gradient(to bottom, #b3cde0, #d3c6e7, #a3d5d3); 
+            
+            /* Smooth gradient inspired by the uploaded image */
         }
 
-        header {
+        header 
+        {
             text-align: center;
+            
             padding: 20px;
-            background: linear-gradient(to right, #afc7f2, #d0a1f4); /* Gradient with purple and blue tones */
+            
+            background: linear-gradient(to right, #afc7f2, #d0a1f4); 
+            
+            /* Gradient with purple and blue tones */
             color: white;
+            
             font-size: 2em;
+            
             font-weight: bold;
+            
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .container {
+        .container
+        {
+            
             max-width: 900px;
+
             margin: 20px auto;
+            
             padding: 20px;
-            background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            
+            background: rgba(255, 255, 255, 0.9); 
+            
+            /* Slightly transparent white */
+            
             border-radius: 15px;
+            
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
-        h2 {
+        h2 
+        {
             text-align: center;
+            
             margin-bottom: 20px;
+            
             color: #6f42c1; /* Purple text inspired by the image */
         }
 
-        table {
+        table
+        {
             width: 100%;
+            
             border-collapse: collapse;
+            
             margin-bottom: 20px;
         }
 
-        table th, table td {
+        table th, table td
+        {
             padding: 10px;
+            
             text-align: left;
+            
             border: 1px solid #ddd;
         }
 
-        table th {
-            background: linear-gradient(to right, #e5eaf5, #d3d9ec); /* Soft gradient */
+        table th 
+        {
+            background: linear-gradient(to right, #e5eaf5, #d3d9ec);
+            
+            /* Soft gradient */
+            
             color: #555;
         }
 
-        input, select {
+        input, select 
+        {
+            
             width: calc(50% - 10px);
+            
             padding: 10px;
+            
             margin: 5px 5px 20px;
+            
             border: 1px solid #ccc;
+            
             border-radius: 4px;
-            background: rgba(240, 240, 255, 0.8); /* Light lavender tone */
+            
+            background: rgba(240, 240, 255, 0.8);
+            
+            /* Light lavender tone */
             color: #333;
         }
 
-        .add-btn {
+        .add-btn 
+        {
             display: block;
+            
             width: 100%;
+
             padding: 10px;
-            background: linear-gradient(to right, #6a5acd, #7a67ee); /* Gradient button with deep purples */
+            
+            background: linear-gradient(to right, #6a5acd, #7a67ee); 
+            /* Gradient button with deep purples */
             color: white;
+            
             border: none;
+            
             border-radius: 5px;
+            
             cursor: pointer;
+            
             margin-top: 10px;
+            
             font-size: 1.1em;
+            
             font-weight: bold;
+            
             transition: background 0.3s ease;
         }
 
-        .add-btn:hover {
-            background: #5a4fcf; /* Slightly darker purple on hover */
+        .add-btn:hover 
+        {
+            
+            background: #5a4fcf; 
+            
+            /* Slightly darker purple on hover */
         }
 
-        .charts {
+        .charts 
+        {
+            
             margin-top: 40px;
         }
 
-        canvas {
+        canvas 
+        {
             margin: 20px auto;
+            
             display: block;
+            
             background: rgba(245, 245, 255, 0.9); /* Subtle background to match theme */
+            
             border-radius: 10px;
+            
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .options-container {
+        .options-container
+        {
+           
             display: flex;
+            
             justify-content: center;
+            
             gap: 20px;
+           
             margin-bottom: 20px;
+            
             flex-wrap: wrap;
         }
 
-        .delete-btn {
+        .delete-btn 
+        {
+            
             background: none;
-            color: #6a5acd; /* Matches button gradient */
+            
+            color: #6a5acd; 
+            
+            /* Matches button gradient */
+            
             border: none;
+            
             cursor: pointer;
+            
             font-weight: bold;
         }
 
-        .delete-btn:hover {
-            color: #483d8b; /* Darker purple */
+        .delete-btn:hover
+        {
+            color: #483d8b; 
+            
+            /* Darker purple */
         }
     </style>
 </head>
@@ -124,483 +209,314 @@
     <div class="container">
         <h2>Income</h2>
         <table id="income-table">
-            <thead>
-                <tr>
-                    <th>Income Item</th>
-                    <th>Amount</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-        <input type="text" id="income-item" placeholder="Income Item">
-        <input type="number" id="income-amount" placeholder="Amount">
-        <button class="add-btn" onclick="addIncome()">Add Income</button>
+    <!-- Table for displaying income items -->
+    <thead>
+        <!-- Table header section -->
+        <tr>
+            <!-- A row within the table header -->
+            <th>Income Item</th>
+            <!-- A header cell for the name of the income item -->
+            <th>Amount</th>
+            <!-- A header cell for the amount of income -->
+            <th>Action</th>
+            <!-- A header cell for actions such as delete or edit -->
+        </tr>
+    </thead>
+    <tbody></tbody>
+    <!-- Table body section, initially empty and will be dynamically populated with income items -->
+</table>
 
-        <h2>Expenses</h2>
-        <table id="expense-table">
-            <thead>
-                <tr>
-                    <th>Expense Item</th>
-                    <th>Amount</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-        <input type="text" id="expense-item" placeholder="Expense Item">
-        <input type="number" id="expense-amount" placeholder="Amount">
-        <button class="add-btn" onclick="addExpense()">Add Expense</button>
+        <!-- Input field for the income item name -->
+<input type="text" id="income-item" placeholder="Income Item">
+<!-- Input field for the income amount -->
+<input type="number" id="income-amount" placeholder="Amount">
+<!-- Button to add the entered income item and amount -->
+<button class="add-btn" onclick="addIncome()">Add Income</button>
 
-        <div class="charts">
-            <h2>Graphical Analysis</h2>
-            <div class="options-container">
-                <label for="graph-type">Select Graph Type: </label>
-                <select id="graph-type" onchange="updateCharts()">
-                    <option value="pie">Pie Chart</option>
-                    <option value="bar">Bar Chart</option>
-                    <option value="line">Line Chart</option>
-                </select>
-                <label for="data-type">Select Data Type: </label>
-                <select id="data-type" onchange="updateCharts()">
-                    <option value="income">Income Distribution</option>
-                    <option value="expenses">Expenses Distribution</option>
-                </select>
-            </div>
-            <canvas id="chartCanvas" width="400" height="400"></canvas>
+<!-- Section header for the expenses table -->
+<h2>Expenses</h2>
 
-            <h2>Savings Trend</h2>
-            <canvas id="savingsCanvas" width="400" height="400"></canvas>
-        </div>
+<!-- Table for displaying expense items -->
+<table id="expense-table">
+    <thead>
+        <!-- Table header section -->
+        <tr>
+            <!-- A row within the table header -->
+            <th>Expense Item</th>
+            <!-- A header cell for the name of the expense item -->
+            <th>Amount</th>
+            <!-- A header cell for the amount of expense -->
+            <th>Action</th>
+            <!-- A header cell for actions such as delete or edit -->
+        </tr>
+    </thead>
+    <tbody></tbody>
+    <!-- Table body section, initially empty and will be dynamically populated with expense items -->
+</table>
+
+
+            <!-- Input field for entering the name of the expense item -->
+<input type="text" id="expense-item" placeholder="Expense Item">
+
+<!-- Input field for entering the expense amount -->
+<input type="number" id="expense-amount" placeholder="Amount">
+
+<!-- Button to add the entered expense item and amount -->
+<button class="add-btn" onclick="addExpense()">Add Expense</button>
+
+<!-- Container for charts and graphical analysis -->
+<div class="charts">
+
+    <!-- Section header for graphical analysis -->
+    <h2>Graphical Analysis</h2>
+
+    <!-- Container for graph-related options -->
+    <div class="options-container">
+        <!-- Label for the graph type dropdown -->
+        <label for="graph-type">Select Graph Type: </label>
+
+        <!-- Dropdown menu to select the type of graph -->
+        <select id="graph-type" onchange="updateCharts()">
+            <!-- Option to choose a pie chart -->
+            <option value="pie">Pie Chart</option>
+            <!-- Option to choose a bar chart -->
+            <option value="bar">Bar Chart</option>
+            <!-- Option to choose a line chart -->
+            <option value="line">Line Chart</option>
+        </select>
+
+        <!-- Label for the data type dropdown -->
+        <label for="data-type">Select Data Type: </label>
+
+        <!-- Dropdown menu to select the type of data for the graph -->
+        <select id="data-type" onchange="updateCharts()">
+            <!-- Option to show income distribution -->
+            <option value="income">Income Distribution</option>
+            <!-- Option to show expenses distribution -->
+            <option value="expenses">Expenses Distribution</option>
+        </select>
     </div>
 
+    <!-- Canvas element for displaying the selected chart -->
+    <canvas id="chartCanvas" width="400" height="400"></canvas>
+
+    <!-- Section header for savings trend analysis -->
+    <h2>Savings Trend</h2>
+
+    <!-- Canvas element for displaying the savings trend chart -->
+    <canvas id="savingsCanvas" width="400" height="400"></canvas>
+
+</div>
+
+
     <script>
-        let incomes = [];
-        let expenses = [];
-        let chart, savingsChart;
+    // Arrays to store income and expense data
+    let incomes = [];
+    let expenses = [];
+    // Variables for storing chart objects
+    let chart, savingsChart;
 
-        function addIncome() {
-            const item = document.getElementById('income-item').value;
-            const amount = parseFloat(document.getElementById('income-amount').value);
+    // Function to add an income entry
+    function addIncome()
+        {
+        // Get the income item name and amount from input fields
+        const item = document.getElementById('income-item').value;
+        const amount = parseFloat(document.getElementById('income-amount').value);
 
-            if (item && amount) {
-                incomes.push({ item, amount });
-                updateTable('income-table', incomes, true);
-                updateCharts();
-                updateSavingsChart();
-                document.getElementById('income-item').value = '';
-                document.getElementById('income-amount').value = '';
-            }
-        }
-
-        function addExpense() {
-            const item = document.getElementById('expense-item').value;
-            const amount = parseFloat(document.getElementById('expense-amount').value);
-
-            if (item && amount) {
-                expenses.push({ item, amount });
-                updateTable('expense-table', expenses, false);
-                updateCharts();
-                updateSavingsChart();
-                document.getElementById('expense-item').value = '';
-                document.getElementById('expense-amount').value = '';
-            }
-        }
-
-        function updateTable(tableId, data, isIncome) {
-            const tableBody = document.querySelector(`#${tableId} tbody`);
-            tableBody.innerHTML = '';
-            data.forEach((entry, index) => {
-                const row = `<tr>
-                                <td>${entry.item}</td>
-                                <td>${entry.amount.toFixed(2)}</td>
-                                <td><button class="delete-btn" onclick="deleteEntry(${index}, ${isIncome})">Delete</button></td>
-                             </tr>`;
-                tableBody.innerHTML += row;
-            });
-        }
-
-        function deleteEntry(index, isIncome) {
-            if (isIncome) {
-                incomes.splice(index, 1);
-            } else {
-                expenses.splice(index, 1);
-            }
-            updateTable(isIncome ? 'income-table' : 'expense-table', isIncome ? incomes : expenses, isIncome);
+        // Check if both item and amount are valid
+        if (item && amount) 
+        {
+            // Add the income entry to the incomes array
+            incomes.push({ item, amount });
+            // Update the income table with the new data
+            updateTable('income-table', incomes, true);
+            // Update the graphical charts
             updateCharts();
+            // Update the savings trend chart
             updateSavingsChart();
+            // Clear the input fields
+            document.getElementById('income-item').value = '';
+            document.getElementById('income-amount').value = '';
+        }
+    }
+
+    // Function to add an expense entry
+    function addExpense() 
+    {
+        // Get the expense item name and amount from input fields
+        const item = document.getElementById('expense-item').value;
+        const amount = parseFloat(document.getElementById('expense-amount').value);
+
+        // Check if both item and amount are valid
+        if (item && amount)
+        {
+            // Add the expense entry to the expenses array
+            expenses.push({ item, amount });
+            // Update the expense table with the new data
+            updateTable('expense-table', expenses, false);
+            // Update the graphical charts
+            updateCharts();
+            // Update the savings trend chart
+            updateSavingsChart();
+            // Clear the input fields
+            document.getElementById('expense-item').value = '';
+            document.getElementById('expense-amount').value = '';
+        }
+    }
+
+    // Function to update the income or expense table
+    function updateTable(tableId, data, isIncome) 
+    {
+        
+        // Get the table body element for the specified table
+        const tableBody = document.querySelector(`#${tableId} tbody`);
+        // Clear the table body content
+        tableBody.innerHTML = '';
+        // Loop through the data array and create table rows
+        data.forEach((entry, index) =>
+            {
+            const row = `<tr>
+                            <td>${entry.item}</td> <!-- Display item name -->
+                            <td>${entry.amount.toFixed(2)}</td> <!-- Display amount -->
+                            <td><button class="delete-btn" onclick="deleteEntry(${index}, ${isIncome})">Delete</button></td> <!-- Delete button -->
+                         </tr>`;
+            // Add the row to the table body
+            tableBody.innerHTML += row;
+        });
+    }
+
+    // Function to delete an entry (income or expense)
+    function deleteEntry(index, isIncome)
+        {
+        // Remove the entry from the appropriate array
+        if (isIncome)
+        {
+            incomes.splice(index, 1);
+        } 
+        else 
+        {
+            expenses.splice(index, 1);
+        }
+        // Update the relevant table and charts
+        updateTable(isIncome ? 'income-table' : 'expense-table', isIncome ? incomes : expenses, isIncome);
+        updateCharts();
+        updateSavingsChart();
+    }
+
+    // Function to update the graphical charts
+    function updateCharts()
+    {
+        // Get the selected graph type and data type from dropdowns
+        const graphType = document.getElementById('graph-type').value;
+        const dataType = document.getElementById('data-type').value;
+
+        let labels, data, label;
+
+        // Determine the labels, data, and chart label based on the data type
+        if (dataType === 'income')
+        {
+            labels = incomes.map(i => i.item);
+            // Use income item names as labels
+            data = incomes.map(i => i.amount); 
+            // Use income amounts as data
+            label = 'Income Distribution';
+        }
+        else 
+        {
+            labels = expenses.map(e => e.item); 
+            // Use expense item names as labels
+            data = expenses.map(e => e.amount); 
+            // Use expense amounts as data
+            label = 'Expenses Distribution';
         }
 
-        function updateCharts() {
-            const graphType = document.getElementById('graph-type').value;
-            const dataType = document.getElementById('data-type').value;
+        // Get the canvas context for the chart
+        const ctx = document.getElementById('chartCanvas').getContext('2d');
+        // Destroy the existing chart if it exists
+        if (chart) chart.destroy();
 
-            let labels, data, label;
+        // Create a new chart with the selected type and data
+        chart = new Chart(ctx, 
+                          {
+            type: graphType, 
+            // Pie, bar, or line chart
+            data: 
+            {
+                labels: labels, 
+                // Chart labels
+                datasets: [{
+                    label: label, 
+                    // Dataset label
+                    data: data, 
+                    // Dataset values
+                    backgroundColor: ['#FF6F61', '#6B5B95', '#88B04B', '#F7CAC9', '#92A8D1'], 
+                    // Colors for the chart
+                    borderColor: '#f4f4f4', 
+                    // Border color
+                    borderWidth: 1 
+                    // Border width
+                }]
+            },
+            options: 
+            {
+                responsive: true, 
+                // Make the chart responsive
+            },
+        });
+    }
 
-            if (dataType === 'income') {
-                labels = incomes.map(i => i.item);
-                data = incomes.map(i => i.amount);
-                label = 'Income Distribution';
-            } else {
-                labels = expenses.map(e => e.item);
-                data = expenses.map(e => e.amount);
-                label = 'Expenses Distribution';
-            }
+    // Function to update the savings trend chart
+    function updateSavingsChart() 
+    {
+        // Generate labels for savings chart (e.g., Month 1, Month 2)
+        const labels = incomes.map((_, index) => `Month ${index + 1}`);
+        // Calculate cumulative income totals over time
+        const incomeTotal = incomes.map((_, i) => incomes.slice(0, i + 1).reduce((sum, income) => sum + income.amount, 0));
+        // Calculate cumulative expense totals over time
+        const expenseTotal = expenses.map((_, i) => expenses.slice(0, i + 1).reduce((sum, expense) => sum + expense.amount, 0));
 
-            const ctx = document.getElementById('chartCanvas').getContext('2d');
-            if (chart) chart.destroy();
+        // Calculate savings as the difference between cumulative income and expenses
+        const savings = incomeTotal.map((total, i) => total - (expenseTotal[i] || 0));
 
-            chart = new Chart(ctx, {
-                type: graphType,
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: label,
-                        data: data,
-                        backgroundColor: ['#FF6F61', '#6B5B95', '#88B04B', '#F7CAC9', '#92A8D1'],
-                        borderColor: '#f4f4f4',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                },
-            });
-        }
+        // Get the canvas context for the savings chart
+        const ctx = document.getElementById('savingsCanvas').getContext('2d');
+        // Destroy the existing savings chart if it exists
+        if (savingsChart) savingsChart.destroy();
 
-        function updateSavingsChart() {
-            const labels = incomes.map((_, index) => `Month ${index + 1}`);
-            const incomeTotal = incomes.map((_, i) => incomes.slice(0, i + 1).reduce((sum, income) => sum + income.amount, 0));
-            const expenseTotal = expenses.map((_, i) => expenses.slice(0, i + 1).reduce((sum, expense) => sum + expense.amount, 0));
+        // Create a new line chart to display savings over time
+        savingsChart = new Chart(ctx,
+            {
+            type: 'line',
+            // Line chart for savings trend
+            data: 
+            {
+                labels: labels, 
+                // Labels for the x-axis
+                datasets: [{
+                    label: 'Savings Over Time', 
+                    // Dataset label
+                    data: savings, 
+                    // Savings data points
+                    borderColor: '#3a7bd5', 
+                    // Line color
+                    backgroundColor: 'rgba(58, 123, 213, 0.2)', 
+                    // Line fill color
+                    borderWidth: 2, 
+                    // Line thickness
+                    fill: true, 
+                    // Fill under the line
+                    tension: 0.4 
+                    // Smoothness of the line
+                }]
+            },
+            options: 
+            {
+                responsive: true, 
+                // Make the chart responsive
+            },
+        });
+    }
+</script>
 
-            const savings = incomeTotal.map((total, i) => total - (expenseTotal[i] || 0));
-
-            const ctx = document.getElementById('savingsCanvas').getContext('2d');
-            if (savingsChart) savingsChart.destroy();
-
-            savingsChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Savings Over Time',
-                        data: savings,
-                        borderColor: '#3a7bd5',
-                        backgroundColor: 'rgba(58, 123, 213, 0.2)',
-                        borderWidth: 2,
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                },
-            });
-        }
-    </script>
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
-    /* Gradient with purple and blue tones */
 </body>
 </html>
